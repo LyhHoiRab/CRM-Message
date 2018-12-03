@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <jmxConfigurator/>
+
+  <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="timeRollLogFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${catalina.base}/logs/${project.name}/${project.name}.log</file>
+
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${catalina.base}/logs/${project.name}/${project.name}.%d{yyyy-MM-dd}.log</fileNamePattern>
+      <maxHistory>30</maxHistory>
+    </rollingPolicy>
+
+    <encoder>
+      <pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="sizeRollLogFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${catalina.base}/logs/${project.name}/${project.name}.log</file>
+
+    <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+      <fileNamePattern>${catalina.base}/logs/${project.name}/${project.name}.%i.log</fileNamePattern>
+      <maxIndex>10</maxIndex>
+    </rollingPolicy>
+
+    <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+      <maxFileSize>20MB</maxFileSize>
+    </triggeringPolicy>
+
+    <encoder>
+      <pattern>%msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="timeAndSizeLogFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${catalina.base}/logs/${project.name}/${project.name}.log</file>
+
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${catalina.base}/logs/${project.name}/${project.name}-%d{yyyy-MM-dd_HH}.%i.zip</fileNamePattern>
+      <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+        <maxFileSize>10MB</maxFileSize>
+      </timeBasedFileNamingAndTriggeringPolicy>
+    </rollingPolicy>
+
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS},%msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <logger name="${project.name}" level="INFO"/>
+
+  <logger name="jdbc.sqltiming" level="INFO"/>
+
+  <logger name="com.ibatis"                                          level="${system.logging.level}"/>
+  <logger name="com.ibatis.common.jdbc.SimpleDataSource"             level="${system.logging.level}"/>
+  <logger name="com.ibatis.common.jdbc.ScriptRunner"                 level="${system.logging.level}"/>
+  <logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate"  level="${system.logging.level}"/>
+
+  <logger name="java.sql.Connection"        level="${system.logging.level}"/>
+  <logger name="java.sql.Statement"         level="${system.logging.level}"/>
+  <logger name="java.sql.PreparedStatement" level="${system.logging.level}"/>
+
+  <logger name="org.springframework" level="${system.logging.level}"/>
+
+  <logger name="com.alibaba.dubbo" level="${system.logging.level}"/>
+
+  <root level="${system.logging.level}">
+    <appender-ref ref="${system.logging.appender}"/>
+  </root>
+</configuration>

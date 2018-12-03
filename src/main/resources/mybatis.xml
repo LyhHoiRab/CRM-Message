@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+                               "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <properties>
+        <property name="dialect" value="mysql"/>
+    </properties>
+
+    <settings>
+        <setting name="cacheEnabled"              value="true"/>
+        <setting name="lazyLoadingEnabled"        value="true"/>
+        <setting name="aggressiveLazyLoading"     value="false"/>
+        <setting name="multipleResultSetsEnabled" value="true"/>
+        <setting name="useColumnLabel"            value="true"/>
+    </settings>
+
+    <typeAliases>
+        <typeAlias type="org.apache.ibatis.type.EnumTypeHandler"                                   alias="EnumTypeHandler"/>
+        <typeAlias type="org.wah.doraemon.utils.mybatis.handler.AccountStateHandler"               alias="AccountStateHandler"/>
+        <typeAlias type="org.wah.doraemon.utils.mybatis.handler.SexHandler"                        alias="SexHandler"/>
+        <typeAlias type="org.wah.doraemon.utils.mybatis.handler.UsingStateHandler"                 alias="UsingStateHandler"/>
+        <typeAlias type="com.crm.message.core.wechat.utils.handler.PurposeTypeHandler"             alias="PurposeTypeHandler"/>
+        <typeAlias type="com.crm.message.core.wechat.utils.handler.WechatMessageTypeHandler"       alias="WechatMessageTypeHandler"/>
+        <typeAlias type="com.crm.message.core.wechat.utils.handler.WechatMessageStatusHandler"     alias="WechatMessageStatusHandler"/>
+        <typeAlias type="com.crm.message.core.wechat.utils.handler.WechatFriendTypeHandler"        alias="WechatFriendTypeHandler"/>
+        <typeAlias type="com.crm.message.core.wechat.utils.handler.WechatStatusHandler"            alias="WechatStatusHandler"/>
+        <typeAlias type="com.crm.message.core.wechat.utils.handler.WechatFriendExpandTypeHandler"  alias="WechatFriendExpandTypeHandler"/>
+        <typeAlias type="com.crm.message.core.wechat.utils.handler.AddFromTypeHandler"             alias="AddFromTypeHandler"/>
+        <typeAlias type="com.crm.message.core.group.utils.handler.GroupTypeHandler"                alias="GroupTypeHandler"/>
+        <typeAlias type="com.crm.message.core.group.utils.handler.AllocationTypeHandler"           alias="AllocationTypeHandler"/>
+        <typeAlias type="com.crm.message.core.words.utils.handler.WordRecordStateHandler"          alias="WordRecordStateHandler"/>
+        <typeAlias type="com.crm.message.core.words.utils.handler.WordTypeHandler"                 alias="WordTypeHandler"/>
+    </typeAliases>
+</configuration>
